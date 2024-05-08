@@ -156,6 +156,7 @@ public class Challenge_07_SimpleMap implements Challenge {
         private final Key[] keys = new Key[64 * 1024];
         private final Aggregate[] values = new Aggregate[keys.length];
 
+        // merge get and put methods
         Aggregate put(Key key) {
             // hash % mask == hash & mask, because map size is a power of two, so we can use this trick instead of heavy div
             for (int mask = keys.length - 1, index = mix(key.hash) & mask; ; index = (index + 1) & mask) {
@@ -184,6 +185,7 @@ public class Challenge_07_SimpleMap implements Challenge {
             }
         }
 
+        // discarding the leftmost 16 bits and filling the vacated positions with zeros.
         static int mix(int hash) {
             return hash ^ (hash >>> 16);
         }

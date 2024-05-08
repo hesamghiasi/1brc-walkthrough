@@ -143,7 +143,7 @@ Not bad for this small change. So picking a better-fit method is always a good i
 ### 02 - No Garbage
 Our lambda is called 1B times to parse a row. It creates a `Measurement` object and several `String` objects. 
 But in the end, we only have 413 entries. Let's see how much time we spend doing GC:
-
+-Xlog:gc
 ```text
 [0.002s][info][gc] Using Parallel
 [0.779s][info][gc] GC(0) Pause Young (Allocation Failure) 1025M->1M(3925M) 1.242ms
